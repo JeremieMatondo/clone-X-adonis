@@ -1,0 +1,163 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Twitter Clone</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+</head>
+<body class="bg-black text-white">
+    
+    <div class="flex max-w-7xl mx-auto min-h-screen">
+        <!-- Barre latérale -->
+        <aside class="w-64 p-4 flex flex-col justify-between h-screen sticky top-0 z-10">
+            <div>
+                <h1 class="text-2xl font-bold mb-6">X</h1>
+                <nav class="space-y-4">
+                    <a href="#" class="flex items-center space-x-3 p-2 rounded-md hover:bg-gray-800">
+                        <span class="text-xl">🏠</span>
+                        <span class="text-lg font-medium">Accueil</span>
+                    </a>
+                    <a href="#" class="flex items-center space-x-3 p-2 rounded-md hover:bg-gray-800">
+                        <span class="text-xl">#</span>
+                        <span class="text-lg font-medium">Explorer</span>
+                    </a>
+                    <a href="#" class="flex items-center space-x-3 p-2 rounded-md hover:bg-gray-800">
+                        <span class="text-xl">🔔</span>
+                        <span class="text-lg font-medium">Notifications</span>
+                    </a>
+                    <a href="#" class="flex items-center space-x-3 p-2 rounded-md hover:bg-gray-800">
+                        <span class="text-xl">✉️</span>
+                        <span class="text-lg font-medium">Messages</span>
+                    </a>
+                    <a href="#" class="flex items-center space-x-3 p-2 rounded-md hover:bg-gray-800">
+                        <span class="text-xl">🔖</span>
+                        <span class="text-lg font-medium">Bookmarks</span>
+                    </a>
+                    <a href="#" class="flex items-center space-x-3 p-2 rounded-md hover:bg-gray-800">
+                        <span class="text-xl">📑</span>
+                        <span class="text-lg font-medium">Lists</span>
+                    </a>
+                    <a href="/profile" class="flex items-center space-x-3 p-2 rounded-md hover:bg-gray-800">
+                        <span class="text-xl">👤</span>
+                        <span class="text-lg font-medium">Profil</span>
+                    </a>
+                    <a href="#" class="flex items-center space-x-3 p-2 rounded-md hover:bg-gray-800">
+                        <span class="text-xl">⋮</span>
+                        <span class="text-lg font-medium">More</span>
+                    </a>
+                    <button class="bg-blue-500 text-white py-2 px-16 rounded-xl hover:bg-blue-700 focus:outline-none focus:ring-2 focus:ring-blue-300">
+                        Tweet
+                    </button>
+                </nav>
+            </div>
+        </aside>
+        
+        <!-- Contenu principal -->
+        <main class="flex-1 border-x border-gray-700">
+            <!-- Entête -->
+            <div class="p-4 border-b flex justify-between items-center sticky top-0 z-10 bg-black text-white">
+                <h2 class="text-xl font-bold">Home</h2>
+                <button class="text-gray-500 hover:text-white text-xl">⚙️</button>
+            </div>
+
+           
+
+            <!-- Zone de saisie du tweet -->
+            <div class="p-4 border-b bg-black text-white">
+    <div class="flex space-x-4">
+        <!-- Image de profil -->
+        <img src="https://png.pngtree.com/png-clipart/20230927/original/pngtree-man-avatar-image-for-profile-png-image_13001877.png" class="w-12 h-12 rounded-full">
+        
+        <!-- Zone de texte et images -->
+        <div class="w-full">
+            <textarea placeholder="Quoi de neuf ?" class="w-full border-none focus:outline-none p-2 resize-none bg-black text-white rounded-md"></textarea>
+
+            <!-- Images uploadées -->
+            <div class="flex gap-64">
+            <div class="flex space-x-6 mt-2">
+                <img src="ima.png" class="w-6 h-6 rounded-md object-cover">
+                <img src="gif.png" class="w-6 h-6 rounded-md object-cover">
+                 <img src="right.png" class="w-6 h-6 rounded-md object-cover">
+                <img src="smile.png" class="w-6 h-6 rounded-md object-cover">
+                <img src="calendar.png" class="w-6 h-6 rounded-md object-cover">
+               
+            </div>
+            <div class="">
+            <button class="bg-blue-500 text-white py-2 px-16 rounded-xl hover:bg-blue-700 focus:outline-none focus:ring-2 focus:ring-blue-300">
+                        Tweet
+                    </button>
+             </div>
+        </div>
+
+        </div>
+        
+    </div>
+</div>
+
+
+           
+
+            <!-- Tweet 2 -->
+            @each(tweet in tweets)
+            <div class="p-4 border-b flex space-x-4 bg-black text-white">
+                 <a href="">
+                <img src="{{ tweet.user.avatar }}" class="w-12 h-12 rounded-full">
+                </a>
+                <div>
+                    <h3 class="font-bold">{{ tweet.user.name }} @<span class="text-gray-500">{{ tweet.user.name }} </span></h3>
+                    <p class="text-white">{{ tweet.content }}</p>
+                    @if(tweet.image)
+                    <img src="{{ tweet.image }}" alt="Image du tweet" width="550 rounded" class="rounded-md">
+                @endif
+                <div class="flex items-center gap-16">
+                    <div class="flex items-center gap-3">
+                        <i class="fa-regular fa-comment text-[var(--twitter-gray)]"></i>
+                        <span class="text-[var(--twitter-gray)]">1,234</span>
+                    </div>
+                    <div class="flex items-center gap-3">
+                        <i class="fa-solid fa-retweet text-[var(--twitter-gray)]"></i>
+                        <span class="text-[var(--twitter-gray)]">1,234</span>
+                    </div>
+                    <div class="flex items-center gap-3">
+                        <i class="fa-regular fa-heart text-[var(--twitter-gray)]"></i>
+                        <span class="text-[var(--twitter-gray)]">1,234</span>
+                    </div>
+                    <div class="flex items-center gap-3">
+                        <i class="fa-solid fa-arrow-up-from-bracket text-[var(--twitter-gray)]"></i>
+                        <span class="text-[var(--twitter-gray)]"></span>
+                    </div>
+                </div>
+                </div>
+            </div>
+             @endeach
+        </main>
+        <aside class="sticky top-0 z-10 w-64 p-4 hidden lg:block ">
+            <!-- Barre de recherche -->
+            <div class="mb-4">
+                <input type="text" placeholder="search Twitter" class="w-full p-2 bg-gray-800 text-white rounded-full focus:outline-none focus:ring-2 focus:ring-blue-500">
+            </div>
+            <div class="bg-gray-800 p-4 rounded-lg ">
+                <h3 class="font-bold text-lg">Trands for you</h3>
+                
+                <ul class="mt-3 space-y-2">
+                    <li>Trending in Turkey <br>#SQUID <br>2,066 tweets </li>
+                    <li>Trending in Turkey <br>#SQUID <br>2,066 tweets </li>
+                    <li>Trending in Turkey <br>#SQUID <br>2,066 tweets </li>
+                    
+                </ul>
+            </div>
+            <div class="bg-gray-800 p-4 rounded-lg mt-4">
+                <h3 class="font-bold text-lg">Who to follow</h3>
+                <ul class="mt-3 space-y-2">
+                    <li>The new york Times <br> @nytimes</li>
+                    <li>CNN <br>@CNN </li>
+                    <li>Twitter <br>@Twitter </li>
+                </ul>
+            </div>
+        </aside>
+    </div>
+     
+</body>
+</html>
