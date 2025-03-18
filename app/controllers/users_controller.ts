@@ -1,7 +1,9 @@
 //import type { HttpContext } from '@adonisjs/core/http'
+import type { HttpContextContract } from '@ioc:Adonis/Core/HttpContext'
+
 
 export default class UsersController {
-    public async show({ view, params }: HttpContextContract) {
+    public async show({ view}: HttpContextContract) {
         const profiles = {
           jemikan: {
             username: 'jemikan',

@@ -1,7 +1,7 @@
 
-
+import type { HttpContextContract } from '@ioc:Adonis/Core/HttpContext'
 export default class TweetsController {
-    public async index({view}){
+    public async index({view}:HttpContextContract){
         const tweets = [
             {
               id: 1,
